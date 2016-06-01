@@ -27,11 +27,6 @@ public class Grid{
 	//Formacao do Grid.
 	public static Color gridMap[][] = new Color[ROWS][COLUMNS];
 	
-	
-	/**
-	 * Construtor da classe Grid.
-	 * 
-	 */
 	public Grid(){
 		//inicializa o grid vazio
 		for (int i = 0; i < ROWS; i++) {
@@ -45,13 +40,9 @@ public class Grid{
 		}
 	}
 	
-	
-	
 	public static Color[][] getGridMap() {
 		return gridMap;
 	}
-
-
 
 	/**
 	 * Coloca uma peca dentro do grid. 
@@ -60,16 +51,29 @@ public class Grid{
 	public void putPieceOnGrid(int row, int column, Color[][] pieceGrid){
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
-				gridMap[row+i][column+j] = pieceGrid[i][j];
+				if(pieceGrid[i][j] != Color.BLACK)gridMap[row+i][column+j] = pieceGrid[i][j];
 			}
 		}
 		
 	}
 	
-	public void cleanRow(int row){
-		/**
-		 * limpa a linha no grid
-		 */
+	public boolean isFreeSpace(int row,int column){	//checa no grid se point fornecido esta ocupado
+		if(gridMap[row][column]==Color.BLACK)
+			return true;
+		else
+			return false;
+	}
+	
+	public void deleteRow(int row){
+		for (int i = row; i > 0; i--) {
+			for (int j = 1; j < COLUMNS-1; j++) {
+				gridMap[i][j] = gridMap[i-1][j];
+			}
+			
+		}
+		for (int i = 1; i < COLUMNS-1; i++) {
+			gridMap[0][i] = Color.BLACK;
+		}
 	}
 	
 	public boolean hasFullRow(){

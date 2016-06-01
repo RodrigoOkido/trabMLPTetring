@@ -1,5 +1,7 @@
 package tetrisInterface;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -9,12 +11,16 @@ import domainClass.PieceI;
 public class TetrisApp{
 	
 	public void startGame(){
-		Grid gameGrid = new Grid();
-		prepareGUI();
 		
+		Grid gameGrid = new Grid();
 		PieceI pieceA = new PieceI();
-		gameGrid.putPieceOnGrid(pieceA.getPieceLocation().getPositionY()+4, 
-				pieceA.getPieceLocation().getPositionX(), pieceA.pieceGrid);
+		prepareGUI();
+		//area em teste/////////////////////////////
+		gameGrid.putPieceOnGrid(pieceA.getPieceLocation().getPositionY(), 
+				pieceA.getPieceLocation().getPositionX(), pieceA.pieceGrid);//coloca uma peca no grid
+		
+		gameGrid.deleteRow(15); //deleta uma linha qualquer
+		gameGrid.putPieceOnGrid(1, 8, pieceA.pieceGrid); //coloca mais uma peca aleatoriamente
 		
 	}
 	
@@ -36,6 +42,7 @@ public class TetrisApp{
 	public static void main(String[] args) {
 	
 		TetrisApp gameTetris = new TetrisApp();
+		
 		gameTetris.startGame();
 	
 	}
