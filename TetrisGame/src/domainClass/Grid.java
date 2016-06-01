@@ -10,8 +10,8 @@ import java.awt.Color;
  */
 public class Grid{
 	//Defini��o de tamanho do grid
-	public final static int COLUMNS = 14;
-	public final static int ROWS = 20;
+	public final static int COLUMNS = 16;
+	public final static int ROWS = 25;
 	public final static int blockSize = 20;
 		
 	
@@ -36,7 +36,7 @@ public class Grid{
 		//inicializa o grid vazio
 		for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j < COLUMNS; j++) {
-				if (j == 0 || j == 13 || i == 19) {
+				if (j == 0 || j == COLUMNS-1 || i == ROWS-1) {
 					gridMap[i][j] = Color.DARK_GRAY;
 				} else {
 					gridMap[i][j] = Color.BLACK;
@@ -57,8 +57,12 @@ public class Grid{
 	 * Coloca uma peca dentro do grid. 
 	 * 
 	 */
-	public void putPieceOnGrid(int row, int column, Piece piece){
-		
+	public void putPieceOnGrid(int row, int column, Color[][] pieceGrid){
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				gridMap[row+i][column+j] = pieceGrid[i][j];
+			}
+		}
 		
 	}
 	
