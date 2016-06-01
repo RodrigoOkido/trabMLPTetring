@@ -1,49 +1,37 @@
 package domainClass;
 
+import java.awt.Color;
+
 /**
- * Peça I. 
+ * Peca I. 
  *
  */
 public class PieceI extends Piece{
 	
-	private Point[][] pieceI;
-	private Point[][] pieceFormat =		
-			{
-				{ new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(3, 1) },
-				{ new Point(1, 0), new Point(1, 1), new Point(1, 2), new Point(1, 3) },
-				{ new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(3, 1) },
-				{ new Point(1, 0), new Point(1, 1), new Point(1, 2), new Point(1, 3) }
-			};
-		
-		
-
 	public PieceI(){
-		setPieceI(pieceFormat); 	
+		
+		this.pieceGrid[0] = new Color[]{Color.blue,Color.blue,Color.blue,Color.blue}; 
+		this.pieceGrid[1] = new Color[]{Color.black,Color.BLACK,Color.black,Color.BLACK};
+		this.pieceGrid[2] = new Color[]{Color.black,Color.BLACK,Color.black,Color.BLACK};
+		this.pieceGrid[3] = new Color[]{Color.black,Color.BLACK,Color.black,Color.BLACK};
+		
+		this.setRotation(RotationState.NONROTATED);
 	}
-
-
-	/**
-	 * @return the pieceI
-	 */
-	public Point[][] getPieceI() {
-		return pieceI;
-	}
-
-
-	/**
-	 * @param pieceI the pieceI to set
-	 */
-	public void setPieceI(Point[][] pieceI) {
-		this.pieceI = pieceI;
-	}
-
 
 	@Override
-	public Point[][] getPieceCoordinates() {
-		return pieceI;
+	public void dropPiece() {
+		// TODO Auto-generated method stub
+		
 	}
 
+	@Override
+	public boolean canStepDown() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
+
+
 
 }

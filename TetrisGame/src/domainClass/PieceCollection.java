@@ -1,10 +1,7 @@
 package domainClass;
 
-import java.util.ArrayList;
-
-
 /**
- * Classe que cria toda a lista de peças existentes do game.
+ * Classe que cria toda a lista de peï¿½as existentes do game.
  *
  */
 public class PieceCollection {

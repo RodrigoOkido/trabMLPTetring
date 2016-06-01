@@ -1,44 +1,36 @@
 package tetrisInterface;
 
-import java.awt.GridLayout;
-
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import domainClass.Grid;
 
-public class TetrisApp extends JFrame{
-
-	private JButton newGame;
-	private JButton pauseGame;
+public class TetrisApp{
 	
 	public TetrisApp(){
+			
+		Grid gameGrid = new Grid();
+		prepareGUI();
+	}
 	
-		newGame = new JButton("New Game");
-		pauseGame = new JButton("Pause Game");
+	public void prepareGUI(){
+		JPanel gridPanel = new TetrisPanel();
 		
-		final Grid game = new Grid();
-		//JPanel right_panel = new JPanel(new GridLayout(3, 1));
-		//JPanel control_panel = new JPanel();
-		//control_panel.add(newGame);
-		//control_panel.add(pauseGame);
-		//right_panel.add(control_panel);
-		//this.setLayout(new GridLayout(1,2));
-		//sideMenu.add(Score);
-		//sideMenu.add(newGame);
-		//sideMenu.add(pauseGame);
-		this.add(game);
-		//this.add(right_panel);
-		this.setTitle("Tetris");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(12*26+180, 26*20+25);
-		this.setResizable(false);
+		
+		JFrame guiFrame = new JFrame("TETRIS by Tetring");
+		guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		guiFrame.setSize(12*26+180, 26*20+25);//a configurar
+		guiFrame.add(gridPanel);
+		guiFrame.setResizable(false);
+		guiFrame.setLocationRelativeTo(null);//abre a janela no meio da tela (opcional)
+		guiFrame.setVisible(true);
+		//guiFrame.repaint();
 	}
 	
 	
 	public static void main(String[] args) {
 	
 		TetrisApp gameTetris = new TetrisApp();
-		gameTetris.setVisible(true);
 		
 	
 	}

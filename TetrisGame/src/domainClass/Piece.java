@@ -3,67 +3,33 @@ package domainClass;
 import java.awt.Color;
 
 /**
- * Classe abstrata Peça. É uma classe abstrata com todos os dados necessários 
- * para a formação de uma peça dentro do game Tetris.
- * 
- *
+ * Classe abstrata Peca. e uma classe abstrata com todos os dados necessarios 
+ * para a formacao de uma peca dentro do game Tetris.
  */
 public abstract class Piece {
 	
-	//Localização do Ponto inicial da peça
-	private Point pieceLocation;
 	
-	//Rotação de uma peça
-	private int rotation;
-	
-	
-	//Determinação de uma cor a peça
-	private static final Color[] pieceColors = {Color.BLUE,Color.YELLOW, Color.PINK, Color.GREEN
-			,Color.RED};
+	private Point pieceLocation;	//Localizacao do Ponto inicial da peca
+	private RotationState rotation;		//estado de rotacao de uma peca
+	public Color[][] pieceGrid = new Color[4][4];
 	
 	
-	/**
-	 * Desce a peça dentro do grid. Pega a coordenada Y e incrementa em 1.
-	 * 
-	 */
-	public void descerPeca(){
-		pieceLocation.setPositionY(pieceLocation.getPositionY()+1);
+	public Point getPieceLocation() {
+		return pieceLocation;
 	}
-
-	
-	public abstract Point[][] getPieceCoordinates();
-	
-	
-	/**
-	 * Retorna a rotação de uma peça.
-	 * 
-	 * @return A rotação da peça.
-	 */
-	public int getRotation() {
+	public void setPieceLocation(Point pieceLocation) {
+		this.pieceLocation = pieceLocation;
+	}
+	public RotationState getRotation() {
 		return rotation;
 	}
-
-
-	/**
-	 * Modifica a rotação de uma peça.
-	 * 
-	 * @param rotation Um inteiro para rotacionar a peça.
-	 */
-	public void setRotation(int rot) {
-		rotation = rot;
-	}
-
-
-	/**
-	 * Retorna a lista cores.
-	 * 
-	 * @return pieceColors
-	 */
-	public static Color[] getPieceColors() {
-		return pieceColors;
+	public void setRotation(RotationState rotation) {
+		this.rotation = rotation;
 	}
 	
+	abstract public void dropPiece();	//funcao para descer a peca
+	abstract public boolean canStepDown();	//verifica no grid se a peca atingiu limite. Nao pode mais descer
 	
-	
+		
 
 }
