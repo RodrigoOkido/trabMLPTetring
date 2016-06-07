@@ -6,7 +6,10 @@ package domainClass;
  */
 public class PieceL extends Piece {
 
+		//Armazena o formato da peça.
 		private Point[][] pieceL;
+		
+		//Indica como é o formato para armazenar após em PieceL.
 		private Point[][] pieceFormat =		
 				{
 					{ new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(2, 2) },
@@ -16,8 +19,11 @@ public class PieceL extends Piece {
 				};
 			
 			
-
+		/**
+		 * Construtor de PieceL.
+		 */
 		public PieceL(){
+			pieceLocation = new Point(5, 1);
 			setPieceL(pieceFormat); 	
 		}
 
@@ -37,7 +43,9 @@ public class PieceL extends Piece {
 			this.pieceL = pieceL;
 		}
 
-
+		/**
+		 * Retorna as coordenadas da peça.
+		 */
 		@Override
 		public Point[][] getPieceCoordinates() {
 			return pieceL;

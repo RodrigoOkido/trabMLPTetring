@@ -1,39 +1,105 @@
 package eventsController;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JOptionPane;
+
+import tetrisInterface.Grid;
+import tetrisInterface.TetrisApp;
 
 /**
+ * Classe Controller. Responsável por toda a resposta de inputs e controle do game.
  * 
- * Nesta classe fica o controle das interrupcoes por acionamento das teclas
- *
  */
-public class Controller implements KeyListener{
+public class Controller implements ActionListener, KeyListener {
 
+	//Recebe o grid do game para controlar.
+	private Grid tetrisGame;
+	
+	//Recebe o App
+	private TetrisApp game;
+	
+	/**
+	 * Construtor da classe.
+	 * 
+	 * @param a Recebe um App do game Tetris. (Classe main)
+	 * @param b Recebe um Grid (Neste caso o grid do game Tetris)
+	 */
+	public Controller(TetrisApp a,Grid b){
+		tetrisGame = b;
+		game = a;
+	}
+	
+	/**
+	 * Controla as ações quando o usuário clica algum botão.
+	 */
 	@Override
-	public void keyTyped(KeyEvent e) {
+	public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equals("Start Game")){
+            try {
+            	if(!tetrisGame.getGameStatus()){
+            		game.setController();
+                	new Thread() {
+            			@Override public void run() {
+            				while (true) {
+            					try {
+            						Thread.sleep(1000);
+            						tetrisGame.dropPieceOnGrid();    					
+            					} catch ( InterruptedException e ) {}
+            				}
+            			}
+            		}.start();
+            		} else{
+            			return;
+            		}       
+            } catch (Exception e1) {
+			
+			}                  
+        }
+        
+	}
+	
+	/**
+	 * Responde as ações do usuário durante a execução do Tetris.
+	 * Responde a movimentação das peças dentro do grid. 
+	 */
+	@Override
+	public void keyPressed(KeyEvent tecla) {
+		switch (tecla.getKeyCode()) {
+		case KeyEvent.VK_UP:
+			tetrisGame.rotate(-1);
+			break;
+		case KeyEvent.VK_DOWN:
+			tetrisGame.dropPieceOnGrid();
+			if(!tetrisGame.getGameStatus()){
+				tetrisGame.setScore(1);
+				String sc = Integer.toString(tetrisGame.getScore());
+				game.getScorePoints().setText(sc);
+			} 
+			break;
+		case KeyEvent.VK_LEFT:
+			tetrisGame.moveLeftOrRight(-1);
+			break;
+		case KeyEvent.VK_RIGHT:
+			tetrisGame.moveLeftOrRight(+1);
+			break;
+		} 
+		
+	}
+
+	//Não foi utilizado.
+	@Override
+	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	//Não foi utilizado.
 	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		switch (e.getKeyCode()) {
-		case KeyEvent.VK_UP:
-			break;
-		case KeyEvent.VK_DOWN:
-			break;
-		case KeyEvent.VK_LEFT:
-			break;
-		case KeyEvent.VK_RIGHT:
-			break;
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
+	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}

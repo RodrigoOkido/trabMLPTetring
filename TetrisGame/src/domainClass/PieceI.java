@@ -1,47 +1,58 @@
 package domainClass;
 
-import java.awt.Color;
-
 /**
- * Peca I. 
+ * Peça I. 
+ *
  */
 public class PieceI extends Piece{
 	
+	//Armazena o formato da peça.
+	private Point[][] pieceI;
+	
+	//Indica como é o formato para armazenar após em PieceI.
+	private Point[][] pieceFormat =		
+			{
+				{ new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(3, 1) },
+				{ new Point(1, 0), new Point(1, 1), new Point(1, 2), new Point(1, 3) },
+				{ new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(3, 1) },
+				{ new Point(1, 0), new Point(1, 1), new Point(1, 2), new Point(1, 3) }
+			};
+		
+		
+	/**
+	 * Construtor de PieceI.
+	 */
 	public PieceI(){
-		
-		this.pieceGrid[0] = new Color[]{Color.BLACK,Color.blue,Color.BLACK,Color.BLACK}; 
-		this.pieceGrid[1] = new Color[]{Color.BLACK,Color.blue,Color.BLACK,Color.BLACK};
-		this.pieceGrid[2] = new Color[]{Color.BLACK,Color.blue,Color.BLACK,Color.BLACK};
-		this.pieceGrid[3] = new Color[]{Color.BLACK,Color.blue,Color.BLACK,Color.BLACK};
-		
-		this.setRotation(RotationState.NONROTATED);//estado inicial da peca eh sem rotacao
-		this.setPieceLocation(new Point((Grid.COLUMNS/2)-2, 0));//seta a posicao da peca no centro
+		pieceLocation = new Point(5, 1);
+		setPieceI(pieceFormat); 	
 	}
 
-	@Override
-	public void dropPiece() {
-		// TODO Auto-generated method stub
-		if(canStepDown())	//y++
-			setPieceLocation(new Point(getPieceLocation().getPositionX(), 
-					getPieceLocation().getPositionY()+1));
-		
+
+	/**
+	 * @return the pieceI
+	 */
+	public Point[][] getPieceI() {
+		return pieceI;
 	}
 
-	@Override
-	public boolean canStepDown() {	//verifica se a peca pode descer sem colidir no grid
-		// TODO Auto-generated method stub
-		for (int i = 3; i > 0; i--) {
-			for(int j = 0; j < 4; j++) {
-				if((pieceGrid[i][j] != Color.BLACK) &&(Grid.gridMap[getPieceLocation().getPositionY()+i+1]
-						[getPieceLocation().getPositionX()+j] != Color.BLACK))return false;
-			}
-		}
-		
-		return true;
+
+	/**
+	 * @param pieceI the pieceI to set
+	 */
+	public void setPieceI(Point[][] pieceI) {
+		this.pieceI = pieceI;
 	}
+
+	
+	/**
+	 * Retorna as coordenadas da peça.
+	 */
+	@Override
+	public Point[][] getPieceCoordinates() {
+		return pieceI;
+	}
+
 	
 	
-
-
 
 }

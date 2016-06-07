@@ -1,9 +1,10 @@
 package domainClass;
 
+
 /**
- * Classe Ponto. Esta classe serï¿½ a responsï¿½vel por criar os pontos dentro da coordenada
- * x e y no grid. Os pontos neste caso, corresponderï¿½o as peï¿½as do game. Cada peï¿½a, serï¿½ 
- * formada por diversos pontos. Por exemplo, a peï¿½a N poderia ser representada da seguinte 
+ * Classe Ponto. Esta classe será a responsável por criar os pontos dentro da coordenada
+ * x e y no grid. Os pontos neste caso, corresponderão as peças do game. Cada peça, será 
+ * formada por diversos pontos. Por exemplo, a peça N poderia ser representada da seguinte 
  * forma:
  * 		  *
  *  	 **
@@ -15,9 +16,21 @@ public class Point {
 	//Atributos para configurar as coordenadas do eixo X e Y.
 	private int positionX, positionY;
 	
+	/**
+	 * Construtor Padrão da classe Ponto. Inicializa
+	 * com as coordenadas x e y em 0.
+	 * 
+	 * @param x Coordenada do eixo X
+	 * @param y Coordenada do eixo Y
+	 */
+	public Point (){
+		positionX = 0;
+		positionY = 0;
+	}
+	
 	
 	/**
-	 * Construtor da classe Ponto.
+	 * Construtor parametrizado da classe Ponto.
 	 * 
 	 * @param x Coordenada do eixo X
 	 * @param y Coordenada do eixo Y
@@ -44,7 +57,7 @@ public class Point {
 
 
 	/**
-	 * Modifica a posiï¿½ï¿½o X do ponto.
+	 * Modifica a posição X do ponto.
 	 * 
 	 * @param positionX 
 	 */
@@ -54,7 +67,7 @@ public class Point {
 	
 	
 	/**
-	 * Modifica a posiï¿½ï¿½o Y do ponto.
+	 * Modifica a posição Y do ponto.
 	 *  
 	 * @param positionY 
 	 */

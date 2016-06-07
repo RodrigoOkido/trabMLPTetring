@@ -3,11 +3,13 @@ package domainClass;
 /**
  * Peça L Invertida.  
  * 
- *
  */
 public class PieceLI extends Piece {
 
+	//Armazena o formato da peça.
 	private Point[][] pieceLI;
+	
+	//Indica como é o formato para armazenar após em PieceLI.
 	private Point[][] pieceFormat =		
 			{
 				{ new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(2, 0) },
@@ -18,13 +20,17 @@ public class PieceLI extends Piece {
 		
 		
 
+	/**
+	 * Construtor de PieceLI.
+	 */
 	public PieceLI(){
+		pieceLocation = new Point(5, 1);
 		setPieceLI(pieceFormat); 	
 	}
 
 
 	/**
-	 * @return the pieceLI
+	 * @return the pieceLI.
 	 */
 	public Point[][] getPieceLI() {
 		return pieceLI;
@@ -39,6 +45,9 @@ public class PieceLI extends Piece {
 	}
 
 
+	/**
+	 * Retorna as coordenadas da peça.
+	 */
 	@Override
 	public Point[][] getPieceCoordinates() {
 		return pieceLI;

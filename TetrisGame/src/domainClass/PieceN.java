@@ -8,7 +8,10 @@ package domainClass;
  */
 public class PieceN extends Piece{
 
+	//Armazena o formato da peça.
 	private Point[][] pieceN;
+	
+	//Indica como é o formato para armazenar após em PieceN.
 	private Point[][] pieceFormat =		
 			{
 				{ new Point(0, 0), new Point(1, 0), new Point(1, 1), new Point(2, 1) },
@@ -19,7 +22,11 @@ public class PieceN extends Piece{
 		
 		
 
+	/**
+	 * Construtor de PieceN.
+	 */
 	public PieceN(){
+		pieceLocation = new Point(5, 1);
 		setPieceN(pieceFormat); 	
 	}
 
@@ -40,6 +47,9 @@ public class PieceN extends Piece{
 	}
 
 
+	/**
+	 * Retorna as coordenadas da peça.
+	 */
 	@Override
 	public Point[][] getPieceCoordinates() {
 		return pieceN;
