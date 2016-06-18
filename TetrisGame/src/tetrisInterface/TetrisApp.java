@@ -165,7 +165,7 @@ public class TetrisApp {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-	
+		
 		TetrisApp gameTetris = new TetrisApp();
 		gameTetris.startGame();
 		c = new Controller(gameTetris,gridPanel);
